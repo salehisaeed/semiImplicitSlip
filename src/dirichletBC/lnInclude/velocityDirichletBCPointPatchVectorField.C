@@ -1,0 +1,1 @@
+../velocityDirichletBC/velocityDirichletBCPointPatchVectorField.C

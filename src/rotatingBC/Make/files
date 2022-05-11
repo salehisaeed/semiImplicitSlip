@@ -1,0 +1,4 @@
+displacemenRotatingBC/displacemenRotatingBCPointPatchVectorField.C
+velocityRotatingBC/velocityRotatingBCPointPatchVectorField.C
+
+LIB = $(FOAM_USER_LIBBIN)/librotatingBC

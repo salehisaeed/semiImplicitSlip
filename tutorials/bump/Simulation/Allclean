@@ -1,0 +1,19 @@
+#!/bin/sh
+cd "${0%/*}" || exit                                # Run from this directory
+. ${WM_PROJECT_DIR:?}/bin/tools/CleanFunctions      # Tutorial clean functions
+#------------------------------------------------------------------------------
+
+models="
+slip
+slipFixedNormal
+slipSTL
+slipSemiImplicitLaplacian
+"
+
+for model in $models
+do
+    echo "Cleaning: $model"
+    (cd "$model" && ./Allclean)
+done
+
+#------------------------------------------------------------------------------

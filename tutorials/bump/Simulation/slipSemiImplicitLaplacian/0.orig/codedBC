@@ -1,0 +1,36 @@
+code
+#{
+    const scalar lLeft = 0.1;
+    const scalar H = 0.4;
+    const scalar hBump = 0.1;
+    const scalar lBump = 1;
+    scalar xBump, yBump;
+    scalar cellHeight;
+
+    const scalar t = this->db().time().value();
+    const scalar xVel = 0.1;
+
+    vectorField p(this->patch().localPoints());
+    vectorField displacement(p.size(),vector(0,0,0));
+
+    forAll(p, idx)
+    {
+        xBump = xVel*t;
+        if ((xBump <= lLeft) || (xBump >= lLeft + lBump))
+        {
+            yBump = 0;
+        }
+        else
+        {
+            yBump = hBump*pow4(sin(constant::mathematical::pi*
+                (xBump-lLeft)/lBump));
+        }
+
+        //cellHeight = (H - yBump)/11;
+
+        displacement[idx].x() = xBump;
+        displacement[idx].y() = yBump*(1 - (p[idx].y())/H);
+    }
+
+    operator==(displacement);
+#};

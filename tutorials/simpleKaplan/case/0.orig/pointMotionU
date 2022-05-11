@@ -1,0 +1,110 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2112                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      binary;
+    class       pointVectorField;
+    arch        "LSB;label=32;scalar=64";
+    location    "0";
+    object      pointMotionU;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 1 -1 0 0 0 0];
+
+internalField   uniform (0 0 0);
+
+boundaryField
+{
+    gv_inlet
+    {
+        type            fixedValue;
+        value           uniform (0 0 0);
+    }
+
+    gv_outlet
+    {
+        type            fixedValue;
+        value           uniform (0 0 0);
+    }
+
+    gv_hub
+    {
+        type            velocityDirichletBC;
+        value           uniform (0 0 0);
+    }
+
+    gv_shroud
+    {
+        type            velocityDirichletBC;
+        value           uniform (0 0 0);
+    }
+
+    gv_blade
+    {
+        type            velocityRotatingBC;
+        value           uniform ( 0 0 0 );
+        axis            ( 0 0 1 );
+        origin          (0.3349 0 0);
+        startTime       0;
+        omega           -1; // deg/s
+    }
+
+    ru_inlet
+    {
+        type            fixedValue;
+        value           uniform (0 0 0);
+    }
+
+    ru_outlet
+    {
+        type            fixedValue;
+        value           uniform (0 0 0);
+    }
+
+    ru_hub
+    {
+        type            simpleKaplanRUHubVelocityDirichletBC;
+        value           uniform (0 0 0);
+    }
+
+    ru_shroud
+    {
+        type            simpleKaplanRUShroudVelocityDirichletBC;
+        value           uniform (0 0 0);
+    }
+
+    ru_blade
+    {
+        type            velocityRotatingBC;
+        value           uniform ( 0 0 0 );
+        axis            (1 0 0);
+        origin          (0 0 0);
+        startTime       0;
+        omega           1;
+    }
+
+    ru_shroudBlade
+    {
+        type            velocityRotatingBC;
+        value           uniform ( 0 0 0 );
+        axis            (1 0 0);
+        origin          (0 0 0);
+        startTime       0;
+        omega           1;
+    }
+
+    ".*per.*"
+    {
+        type            fixedValue;
+        value           uniform (0 0 0);
+    }
+}
+
+// ************************************************************************* //

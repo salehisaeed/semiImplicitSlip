@@ -1,0 +1,4 @@
+rotatingBasicSymmetry/rotatingBasicSymmetryFvPatchScalarField.C
+rotatingSlip/rotatingSlipFvPatchFields.C
+
+LIB = $(FOAM_USER_LIBBIN)/librotatingSlipFv

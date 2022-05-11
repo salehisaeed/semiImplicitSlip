@@ -1,0 +1,101 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2112                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      binary;
+    arch        "LSB;label=32;scalar=64";
+    class       volVectorField;
+    location    "0";
+    object      cellMotionU0;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 1 -1 0 0 0 0];
+
+internalField   uniform (0 0 0);
+
+boundaryField
+{
+    gv_inlet
+    {
+        type            fixedValue;
+        value           uniform (0 0 0);
+    }
+
+    gv_outlet
+    {
+        type            fixedValue;
+        value           uniform (0 0 0);
+    }
+
+    gv_hub
+    {
+        type            slip;
+    }
+
+    gv_shroud
+    {
+        type            slip;
+    }
+
+    gv_blade
+    {
+        type            cellMotion;
+        value           uniform ( 0 0 0 );
+    }
+
+    ru_inlet
+    {
+        type            fixedValue;
+        value           uniform (0 0 0);
+    }
+
+    ru_outlet
+    {
+        type            fixedValue;
+        value           uniform (0 0 0);
+    }
+
+    ru_hub
+    {
+        type            rotatingSlip;
+        axis            (0 0 1); // Same as turbine rotation
+        origin          (0 0 0); // Same as turbine rotation
+        omega           87.859874545394547; // Same as turbine rotation (rad/s)
+    }
+
+    ru_shroud
+    {
+        type            rotatingSlip;
+        axis            (0 0 1);
+        origin          (0 0 0);
+        omega           87.859874545394547;
+    }
+
+    ru_blade
+    {
+        type            cellMotion;
+        value           uniform ( 0 0 0 );
+    }
+
+    ru_shroudBlade
+    {
+        type            cellMotion;
+        value           uniform ( 0 0 0 );
+    }
+
+    ".*per.*"
+    {
+        type            fixedValue;
+        value           uniform (0 0 0);
+    }    
+}
+
+
+// ************************************************************************* //

@@ -1,0 +1,8 @@
+SOURCE = \
+displacementDirichletBC/displacementDirichletBCPointPatchVectorField.C \
+velocityDirichletBC/velocityDirichletBCPointPatchVectorField.C \
+simpleKaplan/simpleKaplanRUShroudVelocityDirichletBC/simpleKaplanRUShroudVelocityDirichletBCPointPatchVectorField.C \
+simpleKaplan/simpleKaplanRUHubVelocityDirichletBC/simpleKaplanRUHubVelocityDirichletBCPointPatchVectorField.C \
+bumpDirichletBC/bumpDirichletBCPointPatchVectorField.C \
+
+# sources

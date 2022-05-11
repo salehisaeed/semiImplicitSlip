@@ -1,0 +1,4 @@
+SOURCE = \
+rotatingSlip/rotatingSlipPointPatchFields.C \
+
+# sources
