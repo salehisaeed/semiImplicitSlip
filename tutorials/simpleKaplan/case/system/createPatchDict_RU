@@ -1,0 +1,103 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v1912                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      createPatchDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+pointSync false;
+
+patches
+(
+    {
+        name ru_inlet;
+        patchInfo
+        {
+            type wall;
+        }
+        constructFrom patches;
+        patches (INFLOW);
+    }
+
+    {
+        name ru_outlet;
+        patchInfo
+        {
+            type wall;
+        }
+        constructFrom patches;
+        patches (OUTFLOW);
+    }
+
+    {
+        name ru_hub;
+        patchInfo
+        {
+            type wall;
+        }
+        constructFrom patches;
+        patches (HUB);
+    }
+
+    {
+        name ru_shroud;
+        patchInfo
+        {
+            type wall;
+        }
+        constructFrom patches;
+        patches (SHROUD);
+    }
+
+    {
+        name ru_shroudBlade;
+        patchInfo
+        {
+            type wall;
+        }
+        constructFrom patches;
+        patches (SHROUDBLADE);
+    }
+
+    {
+        name ru_blade;
+        patchInfo
+        {
+            type wall;
+        }
+        constructFrom patches;
+        patches (BLADE);
+    }
+
+    {
+        name ru_per1;
+        patchInfo
+        {
+            type wall;
+        }
+        constructFrom patches;
+        patches (PER1);
+    }
+
+    {
+        name ru_per2;
+        patchInfo
+        {
+            type wall;
+        }
+        constructFrom patches;
+        patches (PER2);
+    }
+
+);
+
+// ************************************************************************* //

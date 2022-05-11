@@ -1,0 +1,160 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2012                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      blockMeshDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+scale       1;
+
+//Geometry dimensions
+lLeft   0.1;
+lRight  0.1;
+H       0.4;
+hBump   0.1;
+lBump   1;
+
+// Calculating points coordinates
+xMin        0;
+xMinBump    #eval{ $xMin + $lLeft};
+xMaxBump    #eval{ $xMinBump + $lBump };
+xMax        #eval{ $xMaxBump + $lRight };
+
+vertices
+(
+    ( 0 0 0 )  // 0
+    ( $xMinBump 0 0 )  // 1
+    ( $xMaxBump 0 0 )  // 2
+    ( $xMax 0 0 )  // 3
+    ( $xMax $H 0 )  // 4
+    ( $xMaxBump $H 0 )  // 5
+    ( $xMinBump $H 0 )  // 6
+    ( 0 $H 0 )  // 7
+
+    ( 0 0 0.1 )  // 8
+    ( $xMinBump 0 0.1 )  // 9
+    ( $xMaxBump 0 0.1 )  // 10
+    ( $xMax 0 0.1 )  // 11
+    ( $xMax $H 0.1 )  // 12
+    ( $xMaxBump $H 0.1 )  // 13
+    ( $xMinBump $H 0.1 )  // 14
+    ( 0 $H 0.1 )  // 15
+);
+
+blocks
+(
+    // Medium level for tutorial
+    hex ( 0 1 6 7 8  9  14 15) (3 11 1) simpleGrading (1 1 1)
+    hex ( 1 2 5 6 9  10 13 14) (30 11 1) simpleGrading (1 1 1)
+    hex ( 2 3 4 5 10 11 12 13) (3 11 1) simpleGrading (1 1 1)
+);
+
+edges #codeStream
+{
+    codeInclude
+    #{
+        #include "pointField.H"
+        #include "mathematicalConstants.H"
+    #};
+
+    code
+    #{
+        constexpr label nPoints = 200;
+        constexpr scalar dx = $lBump/scalar(nPoints - 1);
+        constexpr scalar pi = constant::mathematical::pi;
+
+        os  << "(" << nl << "spline 1 2" << nl;
+        pointField profile(nPoints);
+
+        for (label i = 0; i < nPoints; ++i)
+        {
+            scalar x = $xMinBump + i*dx;
+            profile[i].x() = x;
+            profile[i].y() = $hBump*pow4(sin(pi*(x-$xMinBump)/$lBump));
+            profile[i].z() = 0;
+        }
+        os << profile << nl;
+
+        os << "spline 9 10" << nl;
+        profile.replace(2, 0.1);
+        os << profile << nl;
+
+        os  << ");" << nl;
+    #};
+};
+
+
+boundary
+(
+    left
+    {
+        type        wall;
+        faces
+        (
+            (0 7 15 8)
+        );
+    }
+
+    right
+    {
+        type        wall;
+        faces
+        (
+            (3 11 12 4)
+        );
+    }
+
+    top
+    {
+        type        wall;
+        faces
+        (
+            (7 6 14 15)
+            (6 5 13 14)
+            (5 4 12 13)
+        );
+    }
+
+    bottom
+    {
+        type        wall;
+        faces
+        (
+            (0 8 9 1)
+            (1 9 10 2)
+            (2 10 11 3)
+        );
+    }
+
+    frontAndBack
+    {
+        type        empty;
+        faces
+        (
+            (0 7 6 1)
+            (1 6 5 2)
+            (2 5 4 3)
+
+            (8 15 14 9)
+            (9 14 13 10)
+            (10 13 12 11)
+
+        );
+    }
+
+);
+
+mergePatchPairs
+(
+);
+
+// ************************************************************************* //

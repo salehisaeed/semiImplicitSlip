@@ -1,0 +1,26 @@
+#!/bin/sh
+cd "${0%/*}" || exit                                # Run from this directory
+. ${WM_PROJECT_DIR:?}/bin/tools/RunFunctions        # Tutorial run functions
+#------------------------------------------------------------------------------
+
+cp -r ../mesh/RU/constant/polyMesh constant/
+
+touch simpleKaplan.foam
+
+runApplication -s RU createPatch -dict system/createPatchDict_RU -overwrite
+
+runApplication mergeMeshes . ../mesh/GV/ -overwrite
+runApplication -s GV createPatch -dict system/createPatchDict_GV -overwrite
+
+restore0Dir
+
+runApplication decomposePar
+runParallel moveDynamicMesh
+
+# runApplication moveDynamicMesh
+
+
+#runParallel checkMesh -writeFields '(cellAspectRatio aspectRatio nonOrthoAngle skewness)'
+#runParallel postProcess -funcs '(funcObjFieldMinMax funcObjFieldAverage)'
+#foamLog log.checkMesh
+#------------------------------------------------------------------------------

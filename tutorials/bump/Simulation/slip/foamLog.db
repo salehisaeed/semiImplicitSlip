@@ -1,0 +1,22 @@
+#------------------------------------------------------------------------------
+# Query database for Foam Log extraction.
+# Each line stands for one query:
+#
+#    name '/' line selector '/' column selector
+#
+# e.g.
+#    kMin/bounding k,/min:
+#
+# The extraction will select a line using 'bounding k,' and in the line
+# takes the word following 'min:' as the value.
+#
+# A special entry is the 'Separator' entry which delimits one iteration
+# from the other.
+#
+#------------------------------------------------------------------------------
+
+guideVaneAngle/Guide vane rotation angle/angle =
+nNonOrthogonal/*Number of severely/faces:
+maxSkewness/Max skewness =/Max skewness =
+nNonOrthogonalMax/Mesh non-orthogonality/Max:
+nNonOrthogonalErr/***Number of non-orthogonality errors/errors:

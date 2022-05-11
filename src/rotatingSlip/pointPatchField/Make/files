@@ -1,0 +1,3 @@
+rotatingSlip/rotatingSlipPointPatchFields.C
+
+LIB = $(FOAM_USER_LIBBIN)/librotatingSlipPoint

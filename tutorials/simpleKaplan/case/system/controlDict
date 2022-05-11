@@ -1,0 +1,81 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2.3.0                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      controlDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+application     pimpleFoam;
+
+startFrom       latestTime;//startTime;//
+
+startTime       0;
+
+stopAt          endTime;//writeNow;//noWriteNow; //
+
+endTime         10;
+
+//maxCo           0.1;
+//adjustTimeStep  yes;
+//maxdeltaT       1e-4;
+deltaT          0.004469606674613;//0.01787842669845;//0.002234803337307;//
+
+writeControl    timeStep; //adjustableRunTime;
+
+writeInterval   16; //0.025;
+
+purgeWrite      0;
+
+writeFormat     binary;
+
+writePrecision  8;
+
+writeCompression off;
+
+timeFormat      general;
+
+timePrecision   8;
+
+runTimeModifiable true;
+
+libs
+(
+    rotatingBC
+    dirichletBC
+    rotatingSlipPoint
+    rotatingSlipFv
+);
+
+
+functions
+{
+/*    testing
+    {
+        type writeRegisteredObject;
+        libs ( "libIOFunctionObjects.so" );
+        objectNames ("bananas");
+        writeControl     adjustableRunTime;
+        writeInterval   0.1;
+    }*/
+/*    writeObjects1
+    {
+        type            writeObjects;
+        libs            ("libutilityFunctionObjects.so");
+        writeControl    writeTime;
+        objects         (faceDiffusivity dynamicMeshDict data wallDist);
+        writeOption     anyWrite;
+    }*/
+}
+
+
+// ************************************************************************* //

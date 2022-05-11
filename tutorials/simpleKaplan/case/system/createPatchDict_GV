@@ -1,0 +1,93 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v1912                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      createPatchDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+pointSync false;
+
+patches
+(
+    {
+        name gv_inlet;
+        patchInfo
+        {
+            type wall;
+        }
+        constructFrom patches;
+        patches (INFLOW);
+    }
+
+    {
+        name gv_outlet;
+        patchInfo
+        {
+            type wall;
+        }
+        constructFrom patches;
+        patches (OUTFLOW);
+    }
+
+    {
+        name gv_hub;
+        patchInfo
+        {
+            type wall;
+        }
+        constructFrom patches;
+        patches (HUB HUB);
+    }
+
+    {
+        name gv_shroud;
+        patchInfo
+        {
+            type wall;
+        }
+        constructFrom patches;
+        patches (SHROUD);
+    }
+
+    {
+        name gv_blade;
+        patchInfo
+        {
+            type wall;
+        }
+        constructFrom patches;
+        patches (BLADE);
+    }
+
+    {
+        name gv_per1;
+        patchInfo
+        {
+            type wall;
+        }
+        constructFrom patches;
+        patches (PER1);
+    }
+
+    {
+        name gv_per2;
+        patchInfo
+        {
+            type wall;
+        }
+        constructFrom patches;
+        patches (PER2);
+    }
+
+);
+
+// ************************************************************************* //

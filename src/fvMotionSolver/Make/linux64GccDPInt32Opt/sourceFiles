@@ -1,0 +1,7 @@
+SOURCE = \
+semiImplicitSlipDisplacementLaplacian/semiImplicitSlipDisplacementLaplacianFvMotionSolver.C \
+semiImplicitSlipDisplacementLaplacianSolidBody/semiImplicitSlipDisplacementLaplacianSolidBodyFvMotionSolver.C \
+semiImplicitSlipVelocityLaplacian/semiImplicitSlipVelocityLaplacianFvMotionSolver.C \
+semiImplicitSlipVelocityLaplacianSolidBody/semiImplicitSlipVelocityLaplacianSolidBodyFvMotionSolver.C \
+
+# sources

@@ -1,0 +1,1 @@
+../rotatingBasicSymmetry/rotatingBasicSymmetryPointPatchField.C

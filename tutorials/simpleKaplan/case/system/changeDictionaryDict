@@ -1,0 +1,51 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2.3.0                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      changeDictionaryDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+boundary
+{
+	ru_inlet
+	{
+        type            wall;
+
+	}
+
+	ru_outlet
+	{
+        type            wall;
+	}
+
+	ru_hub
+	{
+	    type            wall;
+	}
+
+	ru_shroud
+	{
+	    type            wall;
+	}
+
+	ru_blade
+	{
+	    type            wall;
+	    inGroups        2 ( ruBlades wall );
+	}
+
+    ru_shroudBlade
+	{
+	    type            wall;
+	    inGroups        2 ( ruBlades wall );
+	}
+}
+// ************************************************************************* //

@@ -1,0 +1,5 @@
+SOURCE = \
+rotatingBasicSymmetry/rotatingBasicSymmetryFvPatchScalarField.C \
+rotatingSlip/rotatingSlipFvPatchFields.C \
+
+# sources

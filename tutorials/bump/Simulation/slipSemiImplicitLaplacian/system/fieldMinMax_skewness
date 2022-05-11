@@ -1,0 +1,17 @@
+type        fieldMinMax;
+libs        (fieldFunctionObjects);
+
+mode        magnitude;
+fields
+(
+    skewness
+);
+
+// Optional entries (runtime modifiable)
+location    false;
+
+// Optional (inherited) entries
+writePrecision  12;
+writeToFile     true;
+enabled         true;
+log             false;

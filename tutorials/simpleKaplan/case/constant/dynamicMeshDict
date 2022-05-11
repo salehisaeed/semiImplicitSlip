@@ -1,0 +1,66 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v1906                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      dynamicMeshDict;
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dynamicFvMesh dynamicMultiMotionSolverFvMesh; //
+
+dynamicFvMeshLibs
+(
+    fvMotionSolvers
+    semiImplicitSlipfvMotionSolvers
+);
+
+dynamicMultiMotionSolverFvMeshCoeffs
+{
+    runner
+    {
+        solver semiImplicitSlipVelocityLaplacianSolidBody;
+        cellZone RUNNER;
+        semiImplicitSlipVelocityLaplacianSolidBodyCoeffs
+        {
+            solidBodyMotionFunction  rotatingMotion;
+            rotatingMotionCoeffs
+            {
+                origin      (0 0 0);
+                axis        (0 0 1);
+                omega       87.859874545394547;
+            }
+            diffusivity0 inverseDistance ( ru_blade ru_shroudBlade gv_blade );
+            diffusivity inverseDistance ( ru_blade ru_shroudBlade gv_blade );
+            //nNonOrthogonalCorrectors 3;
+        }
+    }
+
+    // runner
+    // {
+    //     solver semiImplicitSlipVelocityLaplacian;
+    //     cellZone RUNNER;
+    //     diffusivity0 inverseDistance ( ru_blade ru_shroudBlade gv_blade );
+    //     diffusivity inverseDistance ( ru_blade ru_shroudBlade gv_blade );
+    //     //nNonOrthogonalCorrectors 3;
+    // }    
+
+    gv
+    {
+        solver   semiImplicitSlipVelocityLaplacian;
+        cellZone GUIDE_VANE;
+        diffusivity0 inverseDistance ( ru_blade ru_shroudBlade gv_blade );
+        diffusivity inverseDistance ( ru_blade ru_shroudBlade gv_blade );
+        //nNonOrthogonalCorrectors 3;
+    }
+}
+// ************************************************************************* //
