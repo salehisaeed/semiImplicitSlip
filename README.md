@@ -15,4 +15,8 @@ The library is developed based on OpenFOAM ([openfoam.com](https://www.openfoam.
 
 ```bash
 pip install foobar
+<<<<<<< HEAD
 ```
+=======
+```
+>>>>>>> 12e5b5ec9787bf65af8800e1ec80433fc0ecdc11
