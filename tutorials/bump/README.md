@@ -27,4 +27,4 @@ In contrast, the developed semi-implicit slip algorithm provides a very stable a
 
 ## Runnig and postprocessing the case
 
-The `Allrun` script, in the Simulation folder, runs all the cases. The PostProcessing folder contains a MATLAB script that extract the mesh quality measures and plots the curves as presented in the paper.
+The `Allrun` script, in the Simulation folder, runs all the cases. The PostProcessing folder contains a MATLAB script that extracts the mesh quality measures and plots the curves as presented in the paper.
