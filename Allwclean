@@ -1,0 +1,6 @@
+#!/bin/sh
+
+wclean src/dirichletBC
+wclean src/fvMotionSolver
+wclean src/rotatingBC
+wclean src/rotatingSlip

@@ -1,0 +1,6 @@
+#!/bin/sh
+
+wmake src/dirichletBC
+wmake src/fvMotionSolver
+wmake src/rotatingBC
+wmake src/rotatingSlip
