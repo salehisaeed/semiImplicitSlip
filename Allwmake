@@ -3,4 +3,5 @@
 wmake src/dirichletBC
 wmake src/fvMotionSolver
 wmake src/rotatingBC
-wmake src/rotatingSlip
+wmake src/rotatingSlip/fvPatchField
+wmake src/pointPatchField/fvPatchField

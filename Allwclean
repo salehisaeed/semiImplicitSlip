@@ -3,4 +3,5 @@
 wclean src/dirichletBC
 wclean src/fvMotionSolver
 wclean src/rotatingBC
-wclean src/rotatingSlip
+wclean src/rotatingSlip/fvPatchField
+wclean src/pointPatchField/fvPatchField
