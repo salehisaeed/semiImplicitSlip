@@ -20,7 +20,7 @@ Then, in a terminal where OpenFOAM is sourced, run the `Allwmake` script, i.e.,
 cd kaplanFoam
 ./Allwmake
 ```
-A proper compiler also needs to be available. Therefore, if the library is compiled on a cluster, one should load the corresponding compiler module before running the `Allwmake` file. To recompile the library, it is recommended to first clean the previous compilation `Allwclean` file, i.e.,
+A proper compiler also needs to be available. Therefore, if the library is compiled on a cluster, one should load the corresponding compiler module before running the `Allwmake` file. To recompile the library, it is recommended to first clean the previous compilation using `Allwclean` file, i.e.,
 ```bash
 ./Allwclean
 ```
