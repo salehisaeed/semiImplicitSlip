@@ -1,9 +1,11 @@
-# kaplanFoam
+# semiImplicitSlip
 
 ## General information
-**kaplanFoam** is a mesh motion library in OpenFOAM for CFD simulation of Kaplan turbines transient operations in which the operating condition is changed by simultaneously adjusting the guide vane and runner blade angles. CFD simulations of such transients are highly complex as it involves mesh deformation of the guide vane passage and simultaneous mesh deformation and rigid-body rotation of the runner blade passage. In particular, the mesh motion process requires a proper slipping of mesh points on highly curved surfaces. The current explicit slip boundary conditions in OpenFOAM fail to make large deformations of the mesh without inverting some of the cells. Thus, a robust semi-implicit slip algorithm is developed, based on the Laplacian smoothing methodology, to tackle this issue. The algorithm, which is implemented as a dynamic library in OpenFOAM, includes different mesh motion solvers and boundary conditions. The library is verified using simple, yet relevant, test cases, including a simple Kaplan turbine.
+**semiImplicitSlip** is a mesh motion library in OpenFOAM that implements a robust semi-implicit algorithm for slipping the mesh points on curved surfaces. The algorithm includes two steps, namely, an explicit step based on the general slip condition and an implicit step based on the Dirichlet condition. It employs the Laplacian smoothing equations to spread the mesh deformation into the domain. Additionally, a solid-body rotation may be added on top of the deformed mesh, which could be useful for modelling the runner region in transient operation of Kaplan turbines which contains simultaneous mesh deformation and solid-body rotation of the mesh.
 
-All the source codes are in the `src` folder, while the `tutorials` folder contains verification test cases. The library is tested and verified with the recent versions of [OpenFOAM](https://www.openfoam.com/), such as v1912, v2006, v2012, v2106, v2112. Please use the [Github](https://github.com/salehisaeed/kaplanFoam) version to receive the most recent updates.
+CFD simulations of numerous engineering fluid flows, such as transient operation of hydraulic turbines, involve an immensely complicated mesh motion process consisting of simultaneous mesh deformation and mesh slipping on highly curved surfaces. The available standard mesh motion methodology in OpenFOAM lacks some features to simulate this elaborate mesh motion. The current explicit slip boundary conditions in OpenFOAM fail to make large deformations of the mesh without inverting some of the cells. semiImplicitSlip library addresses this problem by developing a new dynamic mesh algorithm. The library is verified using simple, yet relevant, test cases, including a simple Kaplan turbine.
+
+All the source codes are in the `src` folder, while the `tutorials` folder contains verification test cases. The library is tested and verified with the recent versions of [OpenFOAM](https://www.openfoam.com/), such as v1912, v2006, v2012, v2106, v2112. Please use the [Github](https://github.com/salehisaeed/semiImplicitSlip) version to receive the most recent updates.
 
 More information about the theory, the developed codes, and the test cases are presented in the submitted manuscript.
 
@@ -11,13 +13,13 @@ More information about the theory, the developed codes, and the test cases are p
 
 The library is developed based on OpenFOAM ([openfoam.com](https://www.openfoam.com/)). Therefore, a complete installation of OpenFOAM (preferably a recent version, such as OpenFOAM-v2112, is required. 
 
-To install (compile) the kaplanFoam library, one needs to download source files using git:
+To install (compile) the semiImplicitSlip library, one needs to download source files using git:
 ```bash
-git clone https://github.com/salehisaeed/kaplanFoam
+git clone https://github.com/salehisaeed/semiImplicitSlip
 ```
 Then, in a terminal where OpenFOAM is sourced, run the `Allwmake` script, i.e.,
 ```bash
-cd kaplanFoam
+cd semiImplicitSlip
 ./Allwmake
 ```
 A proper compiler also needs to be available. Therefore, if the library is compiled on a cluster, one should load the corresponding compiler module before running the `Allwmake` file. To recompile the library, it is recommended to first clean the previous compilation using `Allwclean` file, i.e.,
