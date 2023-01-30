@@ -1,1 +1,0 @@
-../displacementDirichletBC/displacementDirichletBCPointPatchVectorField.C

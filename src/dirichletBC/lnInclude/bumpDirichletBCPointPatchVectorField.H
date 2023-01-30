@@ -1,1 +1,0 @@
-../bumpDirichletBC/bumpDirichletBCPointPatchVectorField.H

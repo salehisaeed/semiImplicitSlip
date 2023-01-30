@@ -1,1 +1,0 @@
-../rotatingBasicSymmetry/rotatingBasicSymmetryFvPatchField_orig.C

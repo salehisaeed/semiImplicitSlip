@@ -1,5 +1,0 @@
-SOURCE = \
-displacemenRotatingBC/displacemenRotatingBCPointPatchVectorField.C \
-velocityRotatingBC/velocityRotatingBCPointPatchVectorField.C \
-
-# sources

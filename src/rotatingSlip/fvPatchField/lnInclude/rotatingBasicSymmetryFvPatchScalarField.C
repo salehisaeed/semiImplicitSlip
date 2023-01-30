@@ -1,1 +1,0 @@
-../rotatingBasicSymmetry/rotatingBasicSymmetryFvPatchScalarField.C

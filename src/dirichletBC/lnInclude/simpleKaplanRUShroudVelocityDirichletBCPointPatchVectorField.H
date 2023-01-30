@@ -1,1 +1,0 @@
-../simpleKaplan/simpleKaplanRUShroudVelocityDirichletBC/simpleKaplanRUShroudVelocityDirichletBCPointPatchVectorField.H

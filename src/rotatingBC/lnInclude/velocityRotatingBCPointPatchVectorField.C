@@ -1,1 +1,0 @@
-../velocityRotatingBC/velocityRotatingBCPointPatchVectorField.C
