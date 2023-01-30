@@ -1,1 +1,0 @@
-../rotatingSurfaceSlipDisplacement/rotatingSurfaceSlipDisplacementFvPatchFields.C
