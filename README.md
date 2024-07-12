@@ -74,6 +74,6 @@ The proper usage of the library is presented using different tutorial cases (ins
 
 
 ## Reference
-[1]. S. Salehi, H. Nilsson, A semi-implicit slip algorithm for mesh deformation in complex geometries, implemented in OpenFOAM, _Revision submitted to Computer Physics Communications_.
+[1]. S. Salehi, H. Nilsson, A semi-implicit slip algorithm for mesh deformation in complex geometries, implemented in OpenFOAM, _Computer Physics Communications_ 287 (2023) 108703. [doi:10.1016/j.cpc.2023.108703](https://doi.org/10.1016/j.cpc.2023.108703).
 
-[2]. S. Salehi, H. Nilsson, E. Lillberg, N. Edh, Development of a novel numerical framework in OpenFOAM to simulate kaplan turbine transients, IOP Conference Series: Earth and Environmental Science 774 (1) (2021) 012058. [doi:10.1088/1755-1315/774/1/012058](https://www.doi.org/10.1088/1755-1315/774/1/012058).
+[2]. S. Salehi, H. Nilsson, E. Lillberg, N. Edh, Development of a novel numerical framework in OpenFOAM to simulate Kaplan turbine transients, _IOP Conference Series: Earth and Environmental Science_ 774 (1) (2021) 012058. [doi:10.1088/1755-1315/774/1/012058](https://www.doi.org/10.1088/1755-1315/774/1/012058).
